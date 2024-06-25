@@ -1,10 +1,19 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
+import { useState } from 'react';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+import { DashboardContext } from './context';
+import Dashboard from './Dashboard';
+
+export default function App() {
+  const [user] = useState({
+    isSubscribed: true,
+    name: 'You',
+  });
+
+  return (
+    <div>
+      <DashboardContext.Provider value={user}>
+        <Dashboard />
+      </DashboardContext.Provider>
+    </div>
+  );
+}
